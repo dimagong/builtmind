@@ -1,7 +1,5 @@
 # Getting Started with Create React App
 
-https://builtmind.notion.site/React-Developer-BuiltMind-Assignment-7a41c045cc124a42b4b4c3c3c8a1e2f8
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
