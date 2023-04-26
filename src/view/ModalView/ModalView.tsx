@@ -11,7 +11,7 @@ interface IModalViewProps {
 }
 
 export const ModalView = ({ title = "Create new post" }: IModalViewProps) => {
-	const { posts, setPosts } = useContextPosts()
+	const { selectedPosts, setSelectedPosts } = useContextPosts()
 	const [open, setOpen] = useState<boolean>(false)
 
 	const createPost = async (post: Partial<IPosts>) => {
@@ -19,7 +19,7 @@ export const ModalView = ({ title = "Create new post" }: IModalViewProps) => {
 		const userId = Date.now()
 		const data: Partial<IPosts> = { userId, ...post }
 		const { data: upPost } = await createPostApi(data)
-		setPosts([...posts, upPost])
+		setSelectedPosts([...selectedPosts, upPost])
 	}
 	const handleClickModal = (isOpen: boolean) => {
 		setOpen(isOpen)

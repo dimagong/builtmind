@@ -8,20 +8,26 @@ interface Props {
 
 interface IContest {
 	posts: IPosts[]
+	selectedPosts: IPosts[]
 	images: IPhotos[]
 	setPosts?: any
+	setSelectedPosts?: any
 }
 
-const PostsContext = createContext<IContest>({ posts: [], images: [] })
+const PostsContext = createContext<IContest>({ posts: [], images: [], selectedPosts: [] })
 
 export const PostsProvider = ({ children }: Props) => {
 	const [posts, setPosts] = useState<IPosts[]>([])
 	const [images, setImages] = useState<any[]>([])
+	const [selectedPosts, setSelectedPosts] = useState<IPosts[]>([])
 
 	useEffect(() => {
 		const getPosts = async () => {
 			const { data: posts } = await getPostsApi()
-			if (posts) setPosts(posts)
+			if (posts) {
+				setPosts(posts)
+				setSelectedPosts(posts)
+			}
 			const { data: images } = await getImagesPostsApi()
 			if (images) setImages(images)
 		}
@@ -29,7 +35,9 @@ export const PostsProvider = ({ children }: Props) => {
 	}, [])
 
 	return (
-		<PostsContext.Provider value={{ posts, images, setPosts }}>{children}</PostsContext.Provider>
+		<PostsContext.Provider value={{ posts, images, setPosts, selectedPosts, setSelectedPosts }}>
+			{children}
+		</PostsContext.Provider>
 	)
 }
 
