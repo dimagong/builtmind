@@ -1,10 +1,8 @@
-import { Button } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 import { FormAuthorization, Layout } from "../../ui"
 import { IFormData } from "../../interfaces"
-import { FormLogin } from "../../ui/FornLogin/Formlogin"
 
-export const AuthorizationView = () => {
+export const SignUpView = () => {
 	let navigate = useNavigate()
 	const redirectToItems = () => {
 		navigate("/")
@@ -18,7 +16,7 @@ export const AuthorizationView = () => {
 	return (
 		<Layout>
 			<div>
-				<FormLogin />
+				<FormAuthorization onSignUp={onSignUp} />
 			</div>
 		</Layout>
 	)

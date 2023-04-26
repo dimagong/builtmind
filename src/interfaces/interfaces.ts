@@ -12,3 +12,10 @@ export interface IPhotos{
     url: string,
     thumbnailUrl: string,
 }
+
+export interface IFormData {
+	firstName: string
+	lastName: string
+	password: string
+	status: string
+}

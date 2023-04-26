@@ -1,11 +1,11 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import "./App.css"
-import { AuthorizationView, ItemView, ItemsListView } from "./view"
+import { AuthorizationView, ItemView, ItemsListView, SignUpView } from "./view"
 import { Loader } from "./ui"
 
 let router = createBrowserRouter([
 	{
-		path: "/",
+		path: "/posts",
 		element: <ItemsListView />,
 		loader: Loader,
 		ErrorBoundary: Loader,
@@ -19,10 +19,16 @@ let router = createBrowserRouter([
 		],
 	},
 	{
-		path: "/authorization",
+		path: "/",
 		loader: Loader,
 		ErrorBoundary: Loader,
 		element: <AuthorizationView />,
+	},
+	{
+		path: "/sign-up",
+		loader: Loader,
+		ErrorBoundary: Loader,
+		element: <SignUpView />,
 	},
 ])
 
